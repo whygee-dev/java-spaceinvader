@@ -1,4 +1,4 @@
-#SpaceInvader with LWJGL OpenGL Java Library
+# SpaceInvader with LWJGL OpenGL Java Library
 
 Basic Space Invader.
 
