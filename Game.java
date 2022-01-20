@@ -87,9 +87,9 @@ public class Game {
       		return;
 		}
 
-		lose = getSprite("lose.gif");
-		Sprite pressAnyKey = getSprite("presskey.gif");
-		win = getSprite("win.gif");
+		lose = getSprite("lose.png");
+		Sprite pressAnyKey = getSprite("presskey.png");
+		win = getSprite("win.png");
 
 		message = pressAnyKey;
 

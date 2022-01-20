@@ -1,6 +1,6 @@
 
 public class Invader extends Entity {
-  private static final int RIGHT_BORDER = 990;
+  private static final int RIGHT_BORDER = 945;
   private static final int LEFT_BORDER = 10;
   private Game game;
 
