@@ -7,3 +7,5 @@ Basic Space Invader.
 To run, import LWJGL jars and natives in your IDE.
 
 A jar is also available in the releases section.
+
+Pass "fs" as argument for fullscreen and "op" for OP mode.
