@@ -32,12 +32,13 @@ public class Game {
 	private int	fps;
 	private static final long timerTicksPerSecond = Sys.getTimerResolution();
 	public static boolean gameRunning = true;
-	private final boolean fullscreen;
+	private final boolean fullscreen, OP;
 	private int	mouseX;
 	private static boolean isApplication;
 
-	public Game(boolean fullscreen) {
+	public Game(boolean fullscreen, boolean OP) {
 		this.fullscreen = fullscreen;
+		this.OP = OP;
 		initialize();
 	}
 
@@ -93,10 +94,10 @@ public class Game {
 
 		message = pressAnyKey;
 
-		bullets = new Bullet[5];
+		bullets = new Bullet[20];
 
 		for (int i = 0; i < bullets.length; i++) {
-			bullets[i] = new Bullet(this, "bullet.png", 0, 0);
+			bullets[i] = new Bullet(this, "bullet.png", 0, 0, this.OP);
 		}
 
 		startGame();
@@ -186,7 +187,7 @@ public class Game {
 	}
 
 	public void fire() {
-		long firingInterval = 300;
+		long firingInterval = this.OP ? 50 : 300;
 		if (System.currentTimeMillis() - lastFire < firingInterval) {
 			return;
 		}
@@ -270,7 +271,7 @@ public class Game {
 		boolean firePressed = hasInput(Keyboard.KEY_SPACE);
 
 		if (!waitingForKeyPress) {
-			float moveSpeed = 500;
+			float moveSpeed = this.OP ? 1000 : 500;
 			if ((leftPressed) && (!rightPressed)) {
 				invader.setHorizontalMovement(-moveSpeed);
 			} else if ((rightPressed) && (!leftPressed)) {
@@ -312,7 +313,8 @@ public class Game {
 	public static void main(String[] args) {
 		isApplication = true;
 		System.out.println("pass fs as argument for fullscreen");
-		new Game((args.length > 0 && "fs".equals(args[0]))).execute();
+		System.out.println("pass op as argument for op mode");
+		new Game((args.length > 0 && "fs".equals(args[0])), (args.length > 0 && "op".equals(args[0]))).execute();
 		System.exit(0);
 	}
 

@@ -2,13 +2,16 @@
 public class Bullet extends Entity {
 
 	private static final int TOP_BORDER	= -100;
-	private final float moveSpeed = -400;
+	private int moveSpeed = -400;
 	private final Game game;
 	private boolean	used;
 
-	public Bullet(Game game, String sprite, int x, int y) {
+	public Bullet(Game game, String sprite, int x, int y, boolean OP) {
 		super(game.getSprite(sprite), x, y);
 		this.game = game;
+		if(OP) {
+			this.moveSpeed = -1000;
+		}
 		dy = moveSpeed;
 	}
 
